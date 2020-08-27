@@ -1,0 +1,105 @@
+classDiagram
+store --> User_item : add item bought by user
+Level --> gameTime : To set time according to level
+rewardCoin --> store : coin computation  
+Penalty --> Score :score as penalty charged
+Level --> Speed : set ball speed as per level  
+drawArena --> Penalty :To set Penatly flag  
+User_item --> drawArena :draw arena as user selected  
+gameMovement --> Penalty :check the current status
+drawArena --> gameMovement :within the arena
+choosePlayer --> gameMovement:play game according to user choice
+
+  class User_Account{
+		- userID
+    - password
+		-register-user()
+		-login-user()
+    -Is-User-Exist()
+    +get-user-id()
+	}
+
+  class store{
+  - backgroungList
+  - batList
+  - ballList
+  - buy-background()
+  - buy-ball()
+  - buy-bat()
+  + get-background()
+  + get-ball()
+  + get-bat()
+  }
+  
+class Level{
+  - levelList
+  + level-count()
+  + level-choose()
+  + Level-Activate()
+  }
+
+class User_item{
+  - own_backgroundList
+  - own_ballList
+  - own_batList
+  + choose-backgroung()
+  + choose-bat()
+  + choose-ball()
+}
+
+class gameTime{
+  - timeLevelMap
+  - timer()
+  + end_game()
+  + start_timer()
+}
+
+class rewardCoin{
+  - totalCoin
+  + Daily-reward-coin()
+  - increment-daily-reward-coin()
+  + level-clearnce-coin()
+  + total-coin()
+  + reduce-coin()
+  + check-Sufficient-budget()
+}
+
+class Penalty{
+  - penaltyCheck
+  + ball_touch_wall()
+  + ball-miss()
+  + playerLeft()
+}
+class Score{
+  - totalScore
+  - score-computation()
+  + get-score()
+}
+
+class Speed{
+  - speedLevelMap
+  - Compute-speed()
+}
+
+class drawArena{
+  - co_ordinate
+  - draw-payer()
+  - draw-ball()
+  - draw-wall()
+  - divide-screen()
+  - draw-choosen-background()
+  + get-wall-coordinate()
+  + player-hit()
+}
+
+class choosePlayer{
+  + choose-player()
+  - set-player-choice()
+}
+
+class gameMovement{
+  move-player()
+  two-player-movement()
+  system-player-movement()
+  move-ball()
+}
